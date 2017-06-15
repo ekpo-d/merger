@@ -1,0 +1,310 @@
+
+
+  <div id="extra-info-desktop" class="extra-desktop">
+    
+    <div class="extra-address">
+      <h4 class="text-center light">
+      <span>
+        <img class="pull-left back" src="./assets/img/icons/back.svg" alt="back">
+      </span>
+      <span>
+        Afro Concept
+      </span>
+      </h4>
+    </div>
+    <hr>
+    
+    <!--<div class="extra-address extra-tabs">
+      <ul role="tablist">
+          <li role="presentation" class="active text-center">
+            <a class="light" href="#home" aria-controls="home" role="tab" data-toggle="tab">
+              Home Insights
+            </a>
+          </li>
+          <li role="presentation" class="text-center">
+            <a class="light" href="#morgage" aria-controls="profile" role="tab" data-toggle="tab">
+              Mortgage insights
+            </a>
+          </li>
+        </ul>
+    </div>
+    <hr>-->
+
+    <!-- Tab panes -->
+    <div class="tab-content">
+      <div role="tabpanel" class="tab-pane fade in active" id="home">
+        <div class="extra-table">
+          <div class="item">
+            <div class="row">
+              <div class="col-sm-6" ng-repeat="item in slideData">
+                <p class="title">
+                  {{ item.heading }}
+                </p>
+                <p class="detail">
+                  {{ item.body }}
+                </p>
+                <br>
+              </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div role="tabpanel" class="tab-pane fade" id="morgage">
+        <div class="extra-table">
+          <div class="item">
+            <div class="row">
+              <div class="col-sm-4">
+                <p class="title">
+                  First Mortgage Amount
+                </p>
+                <p class="detail">
+                  $242,612
+                </p>
+              </div>
+              <div class="col-sm-4">
+                <p class="title">
+                  Mortgage Date
+                </p>
+                <p class="detail">
+                  10-22-2012
+                </p>
+              </div>
+              <div class="col-sm-4">
+                <p class="title">
+                  Mortgage Loan Type
+                </p>
+                <p class="detail">
+                  CNV  
+                </p>
+              </div>
+            </div>
+          </div>
+          <hr>
+          <div class="item">
+            <div class="row">
+              <div class="col-sm-4">
+                <p class="title">
+                  Mortgage Deed Type
+                </p>
+                <p class="detail">
+                  TR
+                </p>
+              </div>
+              <div class="col-sm-4">
+                <p>
+                  Mortgage Term Code
+                </p>
+                <p class="detail">
+                  Y
+                </p>
+              </div>
+              <div class="col-sm-4">
+                <p class="title">
+                  Mortgage Term
+                </p>
+                <p class="detail">
+                  30
+                </p>
+              </div>
+            </div>
+          </div>
+          <hr>
+          <div class="item">
+            <div class="row">
+              <div class="col-sm-4">
+                <p class="title">
+                  Mortgage Due Date
+                </p>
+                <p class="detail">
+                  11-01-2042
+                </p>
+              </div>
+              <div class="col-sm-4">
+                <p class="title">
+                  Lender Name 
+                </p>
+                <p class="detail">
+                  CITIBANK NA 
+                </p>
+              </div>
+              <div class="col-sm-4">
+                <p class="title">
+                </p>
+                <p class="detail">
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+ <section class="dashboard">
+   <nav class="b-down-lightgray desktop">
+     <ul>
+       <li class="logo-wrap text-center">
+         <a href="/" class="logo-wrap">
+            <img class="logo" src="/assets/img/icons/logo.svg" alt="merger" />
+            <span class="thin white">Merger</span>
+         </a>
+       </li>
+       <li class="title">
+         <span class="p-down">
+          MERGED FILES  
+          <span class="thin">(June 13, 2017)</span>
+         </span>
+       </li>
+       <li class="action b-left-lightgray text-center">
+         <a href="#" class="icon-wrap">
+            <img class="icon" src="/assets/img/icons/download.svg" alt="icon" />
+            <span class="thin">Download</span>
+         </a>
+       </li>
+       <li class="action b-left-lightgray text-center">
+         <a href="#" class="icon-wrap">
+            <img class="icon" src="/assets/img/icons/delete.svg" alt="icon" />
+            <span class="thin">Delete</span>
+         </a>
+       </li>
+       <li class="action b-left-lightgray text-center">
+         <a href="#" class="icon-wrap">
+            <img class="icon" src="/assets/img/icons/help.svg" alt="icon" />
+            <span class="thin">Help</span>
+         </a>
+       </li>
+       <li class="search b-left-lightgray">
+         <img class="icon" src="/assets/img/icons/search.svg" alt="icon" />
+         <input type="text" placeholder="Search">
+       </li>
+       <li class="action b-left-lightgray text-center">
+         <a href="#" class="icon-wrap">
+            <img class="icon" src="/assets/img/icons/signout.svg" alt="icon" />
+            <span class="thin">Sign Out</span>
+         </a>
+       </li>
+     </ul>
+   </nav>
+      <div class="b-right-lightgray side-pane">
+        <ul>
+          <li class="b-down-lightgray">
+            <a ng-class="activeClass('/merged')" href="/merged">
+              <div class="row no-marg">
+                <div class="col-xs-2 no-pad-right">
+                  <img class="center-block icon" src="/assets/img/icons/merged.svg" alt="icon"></span>
+                  <!--<span ng-include="'/assets/img/icons/merged.svg'"></span>-->
+                </div>
+                <div class="col-xs-8 no-pad-right">
+                  <p class="side-title">Merged Files</p>
+                </div>
+                <div class="col-xs-2 no-pad-left">
+                  <span class="notif">40</span>
+                </div>
+              </div>
+            </a>
+          </li>
+          <li class="b-down-lightgray">
+            <a ng-class="activeClass('/conflicts')" href="/conflicts">
+              <div class="row no-marg">
+                <div class="col-xs-2 no-pad-right">
+                  <img class="center-block icon" src="/assets/img/icons/conflicts.svg" alt="icon"></span>
+                  <!--<span ng-include="'/assets/img/icons/conflicts.svg'"></span>-->
+                </div>
+                <div class="col-xs-8 no-pad-right">
+                  <p class="side-title">Conflicts</p>
+                </div>
+                <div class="col-xs-2 no-pad-left">
+                  <span class="notif">10</span>
+                </div>
+              </div>
+            </a>
+          </li>
+          <li class="b-down-lightgray">
+            <a ng-class="activeClass('/logs')" href="/logs">
+              <div class="row no-marg">
+                <div class="col-xs-2 no-pad-right">
+                  <img class="center-block icon" src="/assets/img/icons/logs.svg" alt="icon"></span>
+                  <!--<span ng-include="'/assets/img/icons/logs.svg'"></span>-->
+                </div>
+                <div class="col-xs-8 no-pad-right">
+                  <p class="side-title">Logs</p></div>
+                <div class="col-xs-2 no-pad-left">
+                  <span class="notif">30</span>
+                </div>
+              </div>
+            </a>
+          </li>
+          <li class="b-down-lightgray">
+            <a href="#">
+              <div class="row no-marg">
+                <div class="col-xs-2 no-pad-right">
+                    <img class="center-block icon" src="/assets/img/icons/upload.svg" alt="icon" />
+                </div>
+                <div class="col-xs-8 no-pad-right">
+                  <p class="side-title">Upload</p>
+                </div>
+                <div class="col-xs-2 no-pad-left">
+                  <!--<span class="notif"></span>-->
+                </div>
+              </div>
+            </a>
+          </li>
+        </ul>
+      </div>
+   <div id="slide-panel">
+      <div class="content-cover"></div>
+      <div class="table-wrap">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th ng-repeat="heading in data.head" >{{ heading }}</th>
+                <th>
+                  <img src="./assets/img/icons/more.svg" alt="more">
+                </th>
+              </tr>
+              
+            </thead>
+
+            <tbody>
+              <tr class="slide-trigger" ng-repeat="item in data.body" ng-click="populateSlide(item)">
+                <td class="pad-left-first"  ng-repeat="cell in item">{{ cell | characters:20 }}</td>
+                <td>
+                  <span class="more">
+                    <span>
+                      <img src="./assets/img/icons/more2.svg" alt="more">
+                    </span>
+                  </span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+      </div>
+   </div>
+</section>
+<script>
+  // Desktop slider
+    var slideoutDesktop = new Slideout({
+      'panel': document.getElementById('slide-panel'),
+      'menu': document.getElementById('extra-info-desktop'),
+      'padding': 385,
+      'side': 'right',
+      'tolerance': 70
+    });
+    // Toggle button
+    $(document).on('click', 'tbody tr',function() {
+      $('.side-pane').fadeToggle();
+      $('.content-cover').fadeToggle();
+      slideoutDesktop.toggle();
+    });
+    // close button
+    $('.extra-address .back').on('click', function() {
+      $('.side-pane').fadeToggle();
+      $('.content-cover').fadeOut();
+      slideoutDesktop.close();
+    });
+</script>
+
+</body>
+</html>
