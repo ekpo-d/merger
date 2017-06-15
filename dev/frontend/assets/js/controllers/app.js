@@ -24,7 +24,7 @@ app.config(function($routeProvider, $locationProvider){
     })
     .otherwise({redirectTo: '/merged'})
 
-  $locationProvider.html5Mode(true);
+  // $locationProvider.html5Mode(true);
 })
 
 app.run(['$rootScope', function($rootScope) {
@@ -32,5 +32,3 @@ app.run(['$rootScope', function($rootScope) {
         $rootScope.title = current.$$route.title;
     });
 }]);
-
-//one
