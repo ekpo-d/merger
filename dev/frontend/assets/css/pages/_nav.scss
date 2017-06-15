@@ -1,0 +1,78 @@
+nav.desktop{
+  padding: 0;
+  position: fixed;
+  width: 100%;
+  z-index: 3;
+  background: white;
+  
+  ul{
+    @extend %ul;
+  }
+  li{
+    display: inline-block;
+    font-weight: 200px;
+  }
+  .logo-wrap{
+    width: 15%;
+    background: $blue;
+
+    a{
+      @extend %nav-a;
+    }
+    .logo{
+      margin-right: 10px;
+    }
+    span{
+      position: relative;
+      top: 3px;
+      font-size: 16px;
+    }
+  }
+  .title{
+    width: 24%;
+    font-size: 16px;
+    font-weight: 400;
+    padding: 10px 30px;
+
+    .p-down{
+      position: relative;
+      top: 6px;
+    }
+  }
+  .action{
+    width: 10%;
+
+    a{
+      @extend %nav-a;
+      padding: 10px 10px 20px;
+      color: black;
+
+      &:hover{
+        color: $blue;
+      }
+    }
+    .thin{
+      position: relative;
+      top: 2px;
+    }
+  }
+  .search{
+    width: 19%;
+    padding: 10px 30px 20px;
+
+    input{
+      @extend %no-outline;
+      border: 0;
+      border-bottom: 1px solid transparent;
+      position: relative;
+      top: 2px;
+
+      &:hover{
+        border-color: transparentize($blue, 0.6);
+      }
+    }
+  }
+  .icon{
+    margin-right: 10px;
+  }
+}

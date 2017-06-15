@@ -1,0 +1,205 @@
+@media screen and (min-width: 1025px){
+
+}
+@media screen and (max-width: 1280px){
+}
+@media screen and (max-width: 1024px){
+  .mobile-no{
+    display: none;
+  }
+  .resultItemModal{
+    display: inline-block;
+  }
+  .mobile-full{
+    width: 100%;
+  }
+  .nav-desktop{
+    .links{
+      display: none;
+    }
+    .hamburger{
+      display: inline-block;
+    }
+  }
+  .addresses{
+    .desktop{
+      display: none;
+    }
+    .mobile{
+      display: block;
+      margin-top: 20px;
+      padding: 0 50px;
+    }
+  }
+  .login{
+    .content {
+      max-width: 350px;
+      margin: auto;
+      padding-top: 50px;
+    }
+    .info {
+      margin: 0;
+      margin-top: 50px;
+
+      .heading h2 {
+        font-size: 20px;
+      }
+      .heading .mobile-logo {
+        display: block;
+      }
+    }
+  }
+  .signup{
+
+    .form {
+      margin: 0;
+      margin-top: 50px;
+
+      .heading h2 {
+        font-size: 20px;
+      }
+      .heading .mobile-logo {
+        display: block;
+      }
+    }
+    .content {
+      max-width: 450px;
+      margin: auto;
+      padding-top: 50px;
+    }
+  }
+  .dashboard{
+    .left-pane{
+      display: none;
+    }
+    .map{
+      width: 100%;
+    }
+    .tooltip-input{
+      height: 30px;
+      width: inherit;
+    }
+    .actions{
+      display: block;
+      margin-left: 5px;
+    }
+  }
+  .settings{
+    .left-pane{
+      display: none;
+    }
+    .desktop{
+      padding-left: 43px;
+
+      .content {
+        margin-left: 0;
+      }
+      .expiry-input:nth-child(2) {
+        margin-left: 0;
+      }
+    }
+  }
+  .error{
+    .error-img {
+      margin-top: 30px;
+      height: 200px;
+    }
+    .text h1 {
+      font-size: 150px;
+    }
+  }
+}
+@media screen and (max-width: 700px){
+}
+@media screen and (max-width: 425px){
+  .addresses .mobile {
+    padding: 0;
+  }
+  .signup, .login{
+    background-color: white;
+
+    .light {
+      font-weight: 400;
+    }
+    .content-wrapper{
+      background: white;
+    }
+    .content {
+      padding-top: 0;
+    }
+    .form, .info {
+      margin-top: 10px;
+      padding: 20px;
+
+      .heading h2 {
+        font-size: 25px;
+      }
+    }
+  }
+  .login{
+    .info {
+      margin-top: 0;
+      padding: 40px;
+    }
+  }
+  .nav-desktop .logo{
+    margin-left: 20px;
+  }
+  .settings{
+    .left-pane{
+      display: none;
+    }
+    .desktop{
+      padding: 0;
+      padding-top: 20px;
+
+      .mobile-pad-top{
+        padding-top: 10px;
+      }
+    }
+  }
+  #trackingCode{
+    padding-left: 0 !important;
+
+    .btn-copy {
+      top: 100px;
+    }
+    .popover{
+      min-width: 250px;
+    }
+    .desktop{
+      display: none;
+    }
+    .mobile{
+      display: inline;
+    }
+  }
+  .error{
+    .content {
+      margin-top: 50px;
+      padding: 0;
+    }
+    .error-img {
+      margin-top: 0;
+      height: 100px;
+    }
+    .text{
+       h1 {
+        font-size: 100px;
+      }
+       h3 {
+        font-size: 20px;
+      }
+    }
+  }
+}
+@media screen and (max-height: 425px){
+  .nav-mobile{
+    height: inherit;
+  }
+}
+@media screen and (max-width: 320px){
+  #trackingCode .btn-copy {
+    font-size: 12px;
+  }
+}

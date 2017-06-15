@@ -1,0 +1,33 @@
+<svg width="11" height="15" viewBox="0 0 11 15" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<title>logs_blue</title>
+<desc>Created using Figma</desc>
+<g id="Canvas" transform="translate(-1777 -403)">
+<g id="logs_blue">
+<g id="Group">
+<g id="Vector">
+<use xlink:href="#path0_fill" transform="translate(1779.34 408.149)" fill="#5D3CAE"/>
+</g>
+<g id="Vector">
+<use xlink:href="#path1_fill" transform="translate(1779.34 406.277)" fill="#5D3CAE"/>
+</g>
+<g id="Vector">
+<use xlink:href="#path0_fill" transform="translate(1779.34 410.021)" fill="#5D3CAE"/>
+</g>
+<g id="Vector">
+<use xlink:href="#path0_fill" transform="translate(1779.34 411.894)" fill="#5D3CAE"/>
+</g>
+<g id="Vector">
+<use xlink:href="#path0_fill" transform="translate(1779.34 413.766)" fill="#5D3CAE"/>
+</g>
+<g id="Vector">
+<use xlink:href="#path2_fill" transform="translate(1777 403)" fill="#5D3CAE"/>
+</g>
+</g>
+</g>
+</g>
+<defs>
+<path id="path0_fill" d="M 6.08511 0L 0.234043 0C 0.104851 0 0 0.104617 0 0.234043C 0 0.363468 0.104851 0.468085 0.234043 0.468085L 6.08511 0.468085C 6.2143 0.468085 6.31915 0.363468 6.31915 0.234043C 6.31915 0.104617 6.2143 0 6.08511 0Z"/>
+<path id="path1_fill" d="M 0.234043 0.468085L 2.57447 0.468085C 2.70366 0.468085 2.80851 0.363468 2.80851 0.234043C 2.80851 0.104617 2.70366 0 2.57447 0L 0.234043 0C 0.104851 0 0 0.104617 0 0.234043C 0 0.363468 0.104851 0.468085 0.234043 0.468085Z"/>
+<path id="path2_fill" d="M 7.58626 0L 0 0L 0 14.0426L 11 14.0426L 11 3.41374L 7.58626 0ZM 7.7234 0.799021L 10.201 3.2766L 7.7234 3.2766L 7.7234 0.799021ZM 0.468085 13.5745L 0.468085 0.468085L 7.25532 0.468085L 7.25532 3.74468L 10.5319 3.74468L 10.5319 13.5745L 0.468085 13.5745Z"/>
+</defs>
+</svg>

@@ -1,0 +1,18 @@
+<svg width="25" height="25" viewBox="0 0 25 25" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<title>Logo</title>
+<desc>Created using Figma</desc>
+<g id="Canvas" transform="translate(-308 -220)">
+<g id="Logo">
+<g id="Rectangle 5">
+<use xlink:href="#path0_fill" transform="matrix(-1 0 0 1 332.519 220.419)" fill="#FFFFFF"/>
+</g>
+<g id="Polygon">
+<use xlink:href="#path1_fill" transform="matrix(-0.965694 -0.259681 0.253931 -0.967222 318.18 246.304)" fill="#DCCEFE"/>
+</g>
+</g>
+</g>
+<defs>
+<path id="path0_fill" d="M 0 0L 11.1802 11.315L 23.5373 23.8211L 0 23.8211L 0 0Z"/>
+<path id="path1_fill" d="M 9.68371 0L 15.7192 22.953L 0 16.9481L 9.68371 0Z"/>
+</defs>
+</svg>
