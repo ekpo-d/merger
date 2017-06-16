@@ -1,6 +1,4 @@
-
-
-  <div id="extra-info-desktop" class="extra-desktop">
+<div id="extra-info-desktop" class="extra-desktop"  ng-init="getData()">
     
     <div class="extra-address">
       <h4 class="text-center light">
@@ -8,7 +6,7 @@
         <img class="pull-left back" src="static/assets/img/icons/back.svg" alt="back">
       </span>
       <span>
-        Afro Concept
+        Detailed Info
       </span>
       </h4>
     </div>
@@ -158,7 +156,7 @@
          </span>
        </li>
        <li class="action b-left-lightgray text-center">
-         <a href="#" class="icon-wrap">
+         <a ng-click="donwloadFile()" ng-href={{downloadLink}}class="icon-wrap">
             <img class="icon" src="static/assets/img/icons/download.svg" alt="icon" />
             <span class="thin">Download</span>
          </a>
@@ -237,7 +235,7 @@
             </a>
           </li>
           <li class="b-down-lightgray">
-            <a href="#">
+            <a ng-click="openModal('uploadModal')" class="btn-upload">
               <div class="row no-marg">
                 <div class="col-xs-2 no-pad-right">
                     <img class="center-block icon" src="static/assets/img/icons/upload.svg" alt="icon" />
@@ -268,7 +266,7 @@
             </thead>
 
             <tbody>
-              <tr class="slide-trigger" ng-repeat="item in data.body" ng-click="populateSlide(item)">
+              <tr class="slide-trigger" ng-repeat="item in data.body" ng-click="slideAndPopulate(item)">
                 <td class="pad-left-first"  ng-repeat="cell in item">{{ cell | characters:20 }}</td>
                 <td>
                   <span class="more">
@@ -292,13 +290,6 @@
       'side': 'right',
       'tolerance': 70
     });
-    // Toggle button
-    $(document).on('click', 'tbody tr',function() {
-      $('.side-pane').fadeToggle();
-      $('.content-cover').fadeToggle();
-      slideoutDesktop.toggle();
-    });
-    // close button
     $('.extra-address .back').on('click', function() {
       $('.side-pane').fadeToggle();
       $('.content-cover').fadeOut();

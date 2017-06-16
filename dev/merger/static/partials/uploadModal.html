@@ -1,0 +1,21 @@
+<!-- Signup Modal -->
+<div class="uploadModal">
+    <p class="pull-right close" ng-click="$close()">&times;</p>
+    <h3 class="thin blue text-center">Upload File(s)</h3>
+    <hr>
+    <span class="progress" ng-show="progress >= 0">
+        <div ng-style="width:{{progress}}%"></div>
+    </span>
+    <br>
+    <button class="btn btn-blue" ngf-select="uploadFiles($files)" multiple accept=".csv">Select File(s)</button>
+    <br><br>
+    <div class="text-center">
+        <p class="light blue text-center">{{ uploadedComment }} {{errorMsg}}</p>
+        <ul class="uploaded">
+            <li ng-repeat="f in files">
+                {{f.name}}
+            </li>
+        </ul>
+    </div>
+
+</div>

@@ -34,7 +34,8 @@ angular.module('merger').factory('AuthService',
           if(status === 200 && data.result){
             user = true;
             deferred.resolve();
-          } else {
+          } 
+          else {
             user = false;
             deferred.reject();
           }
@@ -84,7 +85,8 @@ angular.module('merger').factory('AuthService',
         .success(function (data, status) {
           if(status === 200 && data.result){
             deferred.resolve();
-          } else {
+          } 
+          else {
             deferred.reject();
           }
         })
@@ -104,7 +106,8 @@ angular.module('merger').factory('AuthService',
       .success(function (data) {
         if(data.status){
           user = true;
-        } else {
+        } 
+        else {
           user = false;
         }
       })

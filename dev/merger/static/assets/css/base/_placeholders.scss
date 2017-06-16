@@ -112,7 +112,7 @@ input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
 .btn-blue{
   width: 100%;
   background-color: $blue;
-  color: white;
+  color: white !important;
   @extend %no-outline;
 
   &:hover{
@@ -213,5 +213,51 @@ input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
     .detail{
       margin-bottom: 0;
     }
+  }
+}
+
+
+.modal-dialog{
+  margin-top: 70px;
+}
+.modal-content, .modal-dialog{
+  background-color: white;
+  padding: 30px 50px;
+  width: 400px;
+
+  .close{
+    color: red;
+    cursor: pointer;
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    opacity: 0.4;
+  }
+  .padLeft{
+    margin-left: 50px;
+  }
+  .padRight{
+    margin-right: 50px;
+    cursor: pointer;
+  }
+}
+.modal-dialog{
+  padding: 0;
+}
+.uploadModal{
+  .progress {
+    height: 2px;
+    display: inline-block;
+    width: 100%;
+    background: $blue;
+}
+  .progress div {
+      font-size: smaller;
+      background: $blue;
+      color: $blue;
+      width: 0;
+  }
+  .uploaded{
+    @extend %ul;
   }
 }

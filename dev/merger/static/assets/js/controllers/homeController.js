@@ -1,29 +1,23 @@
 
 angular.module('merger').controller('homeController',
-  ['$scope', '$location', 'AuthService',
-  function ($scope, $location, AuthService) {
+  ['$scope', '$location', '$window', 'AuthService', '$document', '$uibModal', '$timeout', 'Upload', 'FileService', 'fileType',
+  function ($scope, $location, $window, AuthService, $document, $uibModal, $timeout, Upload, FileService, fileType) {
     
-    $scope.data = {
-      head: ['Business Name', 'Country', 'Location', 'Sector', 'Revenue', 'Source', 'Founder', 'Employee Size', 'Phone Number', 'Email'],
 
-      body: 
-      [
-        [
-        'Afro Concept', 'jbsidufvbiusbvuisbdibisbvibsidbvi suv ubidudbsuibisbnduisiudbiusbd', 'Abuja', 'Energy', 'USD 120, 000', 'Survey 1', 'Frank Azuoma', '6 - 10', '234-803-2345-432', 'frank@afroconcept.com'
-        ],
-        [
-        'Afro Concept', 'Nigeria', 'Abuja', 'Energy', 'USD 120, 000', 'Survey 1', 'Frank Azuoma', '6 - 10', '234-803-2345-432', 'frank@afroconcept.com'
-        ],
-        [
-        'Afro Concept', 'Nigeria', 'Abuja', 'Energy', 'USD 120, 000', 'Survey 1', 'Frank Azuoma', '6 - 10', '234-803-2345-432', 'frank@afroconcept.com'
-        ],
-        [
-        'Afro Concept', 'Nigeria', 'Abuja', 'Energy', 'USD 120, 000', 'Survey 1', 'Frank Azuoma', '6 - 10', '234-803-2345-432', 'frank@afroconcept.com'
-        ]
-      ]
-    };
+    $scope.getData = function(){
+      console.log(fileType)
+      FileService.getFile(fileType)
+      .then(function(response){
+        $scope.data = response.data.result
+      })
+    }
 
-    $scope.populateSlide = function(item){
+    $scope.slideAndPopulate = function(item){
+      
+      $window.$('.side-pane').fadeToggle();
+      $window.$('.content-cover').fadeToggle();
+      $window.slideoutDesktop.toggle();
+
       $scope.slideData = []
       for (var i = 0; i < item.length; i++){
         $scope.slideData.push(
@@ -47,6 +41,47 @@ angular.module('merger').controller('homeController',
           $location.path('/login');
         });
 
+    };
+    $scope.openModal = function (template) {
+      var parentElem = $document.find('body')
+      $uibModal.open({
+        templateUrl: 'static/partials/' + template + '.html',
+        appendTo: parentElem,
+        controller: 'homeController',
+        scope: $scope
+      })
+    }
+    
+    $scope.dismissModal = function () {
+      $uibModal.dismiss('cancel');
+    }
+
+    $scope.uploadedComment = '';
+
+    $scope.uploadFiles = function (files) {
+        $scope.files = files;
+        if (files && files.length) {
+            Upload.upload({
+                url: '/api/v1.0/upload',
+                data: {
+                    files: files
+                }
+            }).then(function (response) {
+                $timeout(function () {
+                    $scope.result = response.data;
+                });
+            }, 
+            function (response) {
+                if (response.status > 0) {
+                    $scope.errorMsg = response.status + ': ' + response.data;
+                }
+            }, 
+            function (evt) {
+                $scope.uploadedComment = 'Upload Complete! Below are the files uploaded';
+                $scope.progress = 
+                    Math.min(100, parseInt(100.0 * evt.loaded / evt.total));
+            });
+        }
     };
 
 }]);

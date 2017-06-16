@@ -1,48 +1,34 @@
-from flask import request, jsonify, session
+import requests
+from flask import request, jsonify, session, abort
 
-from . import core
-# from ../merger.models import User
+from . import core, dropboxAPI, fileHandler
+from .. import models
 
-# routes
+def getData(filepath):
+    try:
+        fileString = requests.get(dropboxAPI.download(filepath)).text
+        return fileHandler.breakdown(fileString)
+    except:
+        abort(500)
 
-# @app.route('/register', methods=['POST'])
-# def register():
-#     json_data = request.json
-#     user = User(
-#         email=json_data['email'],
-#         password=json_data['password']
-#     )
-#     try:
-#         db.session.add(user)
-#         db.session.commit()
-#         status = 'success'
-#     except:
-#         status = 'this user is already registered'
-#     db.session.close()
-#     return jsonify({'result': status})
+@core.route('/upload', methods=['POST'])
+def upload():
+    files = request.files.to_dict()
+    newfile = ''
+    for item in files:
+        newfile += files[item].read()
+    dropboxAPI.upload(newfile, '/newfile.csv')
+    return jsonify({'result': 'success'})
+
+@core.route('/download/<fileType>', methods=['GET'])
+def dl(fileType):
+    filepath = '/' + fileType + '.csv'
+    response = dropboxAPI.download(filepath)
+    return jsonify({'result': 'success'})
 
 
-# @app.route('/login', methods=['GET', 'POST'])
-# def login():
-#     json_data = request.json
-#     user = User.query.filter_by(email=json_data['email']).first()
-#     if user and bcrypt.check_password_hash(
-#             user.password, json_data['password']):
-#         session['logged_in'] = True
-#         status = True
-#     else:
-#         status = False
-#     return jsonify({'result': status})
-
-# @app.route('/status')
-# def status():
-#     if session.get('logged_in'):
-#         if session['logged_in']:
-#             return jsonify({'status': True})
-#     else:
-#         return jsonify({'status': False})
-
-# @app.route('/logout', methods=['GET', 'POST'])
-# def logout():
-#     session.pop('logged_in', None)
-#     return jsonify({'result': 'success'})
+@core.route('/get/<fileType>', methods=['GET'])
+def getFile(fileType):
+    filepath = '/' + fileType + '.csv'
+    response = getData(filepath)
+    return jsonify({'result': response})
