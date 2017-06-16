@@ -34,8 +34,9 @@ def login():
         status = False
     return jsonify({'result': status})
 
-@auth.route('/status')
+@auth.route('/status', methods=['GET'])
 def status():
+    print session.get('logged_in')
     if session.get('logged_in'):
         if session['logged_in']:
             return jsonify({'status': True})
