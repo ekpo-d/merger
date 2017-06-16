@@ -1,6 +1,6 @@
-var homeModule = angular.module('homeModule', [])
+var homeModule = angular.module('homeModule', ['authModule'])
 
-homeModule.controller('HomeCtrlr', function($scope, $location, $window, $document){
+homeModule.controller('HomeCtrlr', function($scope, $location, authService){
 
   $scope.data = {
     head: ['Business Name', 'Country', 'Location', 'Sector', 'Revenue', 'Source', 'Founder', 'Employee Size', 'Phone Number', 'Email'],
@@ -21,9 +21,9 @@ homeModule.controller('HomeCtrlr', function($scope, $location, $window, $documen
       ]
     ]
   };
-  $scope.slideData = [];
 
   $scope.populateSlide = function(item){
+    $scope.slideData = []
     for (var i = 0; i < item.length; i++){
       $scope.slideData.push(
         {
@@ -32,11 +32,21 @@ homeModule.controller('HomeCtrlr', function($scope, $location, $window, $documen
         }
       );
     }
-    console.log($scope.slideData)
   };
 
   $scope.activeClass = function (path) {
     return ($location.path().substr(0, path.length) === path) ? 'active' : '';
   };
+
+  $scope.logout = function () {
+
+    // call logout from auth service
+    authService.logout()
+      .then(function () {
+        $location.path('/login');
+      });
+
+  };
+
   
 })

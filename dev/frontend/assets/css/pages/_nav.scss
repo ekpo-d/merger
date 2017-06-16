@@ -41,6 +41,7 @@ nav.desktop{
   }
   .action{
     width: 10%;
+    cursor: pointer;
 
     a{
       @extend %nav-a;
