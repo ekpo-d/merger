@@ -23,7 +23,9 @@ def upload():
 @core.route('/download/<fileType>', methods=['GET'])
 def dl(fileType):
     filepath = '/' + fileType + '.csv'
+    print filepath
     response = dropboxAPI.download(filepath)
+    print response
     return jsonify({'result': 'success'})
 
 

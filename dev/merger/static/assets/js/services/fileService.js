@@ -18,7 +18,7 @@ angular.module('merger').factory('FileService',
       var deferred = $q.defer();
 
       // send a post request to the server
-      $http.get('/api/v1.0/get/merged')
+      $http.get('/api/v1.0/download/' + fileType)
         // handle success
         .success(function (data, status) {
           if(status === 200 && data.data){

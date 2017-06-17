@@ -156,7 +156,7 @@
          </span>
        </li>
        <li class="action b-left-lightgray text-center">
-         <a ng-click="donwloadFile()" ng-href={{downloadLink}}class="icon-wrap">
+         <a ng-click="donwloadFile()" ng-href="{{downloadLink}}" class="icon-wrap">
             <img class="icon" src="static/assets/img/icons/download.svg" alt="icon" />
             <span class="thin">Download</span>
          </a>
@@ -235,7 +235,8 @@
             </a>
           </li>
           <li class="b-down-lightgray">
-            <a ng-click="openModal('uploadModal')" class="btn-upload">
+            <a  class="btn-upload" data-toggle="modal" data-target="#myModal">
+            <!--<a  class="btn-upload" ng-click="openModal('uploadModal')">-->
               <div class="row no-marg">
                 <div class="col-xs-2 no-pad-right">
                     <img class="center-block icon" src="static/assets/img/icons/upload.svg" alt="icon" />
@@ -281,6 +282,39 @@
       </div>
    </div>
 </section>
+
+<!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="uploadModal">
+            <p class="pull-right close" ng-click="$close()">&times;</p>
+            <h3 class="thin blue text-center">Upload File(s)</h3>
+            <hr>
+            <span class="progress" ng-show="progress >= 0">
+                <div ng-style="width:{{progress}}%"></div>
+            </span>
+            <br>
+            <button class="btn btn-blue" ngf-select="uploadFiles($files)" multiple accept=".csv">Select File(s)</button>
+            <br><br>
+            <div class="text-center">
+                <p class="light blue text-center">{{ uploadedComment }} {{errorMsg}}</p>
+                <ul class="uploaded">
+                    <li ng-repeat="f in files">
+                        {{f.name}}
+                    </li>
+                </ul>
+            </div>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+
+
 <script>
   // Desktop slider
     var slideoutDesktop = new Slideout({

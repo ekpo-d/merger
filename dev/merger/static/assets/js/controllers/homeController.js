@@ -5,10 +5,16 @@ angular.module('merger').controller('homeController',
     
 
     $scope.getData = function(){
-      console.log(fileType)
       FileService.getFile(fileType)
       .then(function(response){
         $scope.data = response.data.result
+      })
+    }
+
+    $scope.donwloadFile = function(){
+      FileService.download(fileType)
+      .then(function(response){
+        $scope.downloadLink = response.data.result
       })
     }
 
