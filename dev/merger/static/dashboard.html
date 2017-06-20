@@ -1,144 +1,108 @@
-<div id="extra-info-desktop" class="extra-desktop"  ng-init="getData()">
-    
-    <div class="extra-address">
-      <h4 class="text-center light">
-      <span>
-        <img class="pull-left back" src="static/assets/img/icons/back.svg" alt="back">
-      </span>
-      <span>
-        Detailed Info
-      </span>
-      </h4>
-    </div>
-    <hr>
-    
-    <!--<div class="extra-address extra-tabs">
-      <ul role="tablist">
-          <li role="presentation" class="active text-center">
-            <a class="light" href="#home" aria-controls="home" role="tab" data-toggle="tab">
-              Home Insights
-            </a>
-          </li>
-          <li role="presentation" class="text-center">
-            <a class="light" href="#morgage" aria-controls="profile" role="tab" data-toggle="tab">
-              Mortgage insights
-            </a>
-          </li>
-        </ul>
-    </div>
-    <hr>-->
+<div  ng-init="getData()">
 
-    <!-- Tab panes -->
-    <div class="tab-content">
-      <div role="tabpanel" class="tab-pane fade in active" id="home">
-        <div class="extra-table">
-          <div class="item">
-            <div class="row">
-              <div class="col-sm-6" ng-repeat="item in slideData">
-                <p class="title">
-                  {{ item.heading }}
-                </p>
-                <p class="detail">
-                  {{ item.body }}
-                </p>
-                <br>
-              </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div role="tabpanel" class="tab-pane fade" id="morgage">
-        <div class="extra-table">
-          <div class="item">
-            <div class="row">
-              <div class="col-sm-4">
-                <p class="title">
-                  First Mortgage Amount
-                </p>
-                <p class="detail">
-                  $242,612
-                </p>
-              </div>
-              <div class="col-sm-4">
-                <p class="title">
-                  Mortgage Date
-                </p>
-                <p class="detail">
-                  10-22-2012
-                </p>
-              </div>
-              <div class="col-sm-4">
-                <p class="title">
-                  Mortgage Loan Type
-                </p>
-                <p class="detail">
-                  CNV  
-                </p>
-              </div>
-            </div>
-          </div>
-          <hr>
-          <div class="item">
-            <div class="row">
-              <div class="col-sm-4">
-                <p class="title">
-                  Mortgage Deed Type
-                </p>
-                <p class="detail">
-                  TR
-                </p>
-              </div>
-              <div class="col-sm-4">
-                <p>
-                  Mortgage Term Code
-                </p>
-                <p class="detail">
-                  Y
-                </p>
-              </div>
-              <div class="col-sm-4">
-                <p class="title">
-                  Mortgage Term
-                </p>
-                <p class="detail">
-                  30
-                </p>
-              </div>
-            </div>
-          </div>
-          <hr>
-          <div class="item">
-            <div class="row">
-              <div class="col-sm-4">
-                <p class="title">
-                  Mortgage Due Date
-                </p>
-                <p class="detail">
-                  11-01-2042
-                </p>
-              </div>
-              <div class="col-sm-4">
-                <p class="title">
-                  Lender Name 
-                </p>
-                <p class="detail">
-                  CITIBANK NA 
-                </p>
-              </div>
-              <div class="col-sm-4">
-                <p class="title">
-                </p>
-                <p class="detail">
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
+<div id="extra-d" class="extra-desktop">  
+  <div class="extra-address">
+    <h4 class="text-center light">
+    <span>
+      <img class="pull-left back" src="static/assets/img/icons/back.svg" alt="back">
+    </span>
+    <span>
+      Detailed Info
+    </span>
+    </h4>
   </div>
+  <hr>
+  <!-- Tab panes -->
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane fade in active">
+      <div class="extra-table">
+        <div class="item">
+          <div class="row">
+            <div class="col-sm-6" ng-repeat="item in slideData">
+              <p class="title">
+                {{ item.heading }}
+              </p>
+              <p class="detail">
+                {{ item.body }}
+              </p>
+              <br>
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+
+<div id="extra-info-desktop2" class="extra-desktop">  
+  <div class="extra-address">
+    <h4 class="text-center light">
+    <span>
+      <img class="pull-left back2" src="static/assets/img/icons/back.svg" alt="back">
+    </span>
+    <span>
+      Detailed Info
+    </span>
+    </h4>
+  </div>
+  <hr>
+    
+  <div class="extra-address extra-tabs">
+    <ul role="tablist" id="slide2">
+        <li role="presentation" class="active text-center">
+          <a class="light" href="#dup" aria-controls="duplicates" role="tab" data-toggle="tab">
+            Conflicts
+          </a>
+        </li>
+        <li role="presentation" class="text-center">
+          <a class="light" href="#act" aria-controls="actions" role="tab" data-toggle="tab">
+            Actions
+          </a>
+        </li>
+      </ul>
+  </div>
+  <hr>
+
+  <!-- Tab panes -->
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane fade in active" id="dup">
+      <div class="extra-table">
+        <div class="item">
+            <div ng-repeat="item in slideData2">
+              <h4 class="text-center">Conflict {{ $index + 1 }}</h4>
+              <div class="row">
+                <div class="col-sm-6"  ng-repeat="stuff in item">
+                  <br>
+                  <p class="title">
+                    {{ stuff.heading }}
+                  </p>
+                  <p class="detail">
+                    {{ stuff.body }}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div role="tabpanel" class="tab-pane fade" id="act">
+      <div class="extra-table">
+        <div class="item">
+          <p>Select a file to be merged</p>
+          <div class="form-group">
+            <select class="form-control" ng-model="conflictSelected">
+              <option  ng-repeat="item in slideData2" value="{{$index}}">Conflict {{ $index + 1 }}</option>
+            </select>
+          </div>
+          <button class="btn btn-blue" ng-click="mergeConflict()">Merge Conflict</button>
+        </div>
+        <hr>
+      </div>
+    </div>
+  </div>
+
+</div>
 
  <section class="dashboard">
    <nav class="b-down-lightgray desktop">
@@ -151,31 +115,30 @@
        </li>
        <li class="title">
          <span class="p-down">
-          MERGED FILES  
-          <span class="thin">(June 13, 2017)</span>
+          {{ pageDesc }} 
          </span>
        </li>
        <li class="action b-left-lightgray text-center">
-         <a ng-click="donwloadFile()" ng-href="{{downloadLink}}" class="icon-wrap">
+         <a ng-click="downloadFile()"  data-toggle="modal" data-target="#downloadModal" class="icon-wrap">
             <img class="icon" src="static/assets/img/icons/download.svg" alt="icon" />
             <span class="thin">Download</span>
          </a>
        </li>
        <li class="action b-left-lightgray text-center">
-         <a href="#" class="icon-wrap">
+         <a class="icon-wrap"  data-toggle="modal" data-target="#deleteModal">
             <img class="icon" src="static/assets/img/icons/delete.svg" alt="icon" />
             <span class="thin">Delete</span>
          </a>
        </li>
        <li class="action b-left-lightgray text-center">
-         <a href="#" class="icon-wrap">
+         <a class="icon-wrap"  data-toggle="modal" data-target="#helpModal">
             <img class="icon" src="static/assets/img/icons/help.svg" alt="icon" />
             <span class="thin">Help</span>
          </a>
        </li>
        <li class="search b-left-lightgray">
          <img class="icon" src="static/assets/img/icons/search.svg" alt="icon" />
-         <input type="text" placeholder="Search">
+         <input ng-model="tableFilter" type="text" placeholder="Search">
        </li>
        <li class="action b-left-lightgray text-center">
          <a ng-click='logout()' class="icon-wrap" >
@@ -235,7 +198,7 @@
             </a>
           </li>
           <li class="b-down-lightgray">
-            <a  class="btn-upload" data-toggle="modal" data-target="#myModal">
+            <a  class="btn-upload" data-toggle="modal" data-target="#uploadModal">
             <!--<a  class="btn-upload" ng-click="openModal('uploadModal')">-->
               <div class="row no-marg">
                 <div class="col-xs-2 no-pad-right">
@@ -252,39 +215,78 @@
           </li>
         </ul>
       </div>
+
    <div id="slide-panel">
       <div class="content-cover"></div>
       <div class="table-wrap">
-          <table class="table table-striped">
-            <thead>
-              <tr>
-                <th ng-repeat="heading in data.head" >{{ heading }}</th>
-                <th>
-                  <img src="static/assets/img/icons/more.svg" alt="more">
-                </th>
-              </tr>
-              
-            </thead>
 
-            <tbody>
-              <tr class="slide-trigger" ng-repeat="item in data.body" ng-click="slideAndPopulate(item)">
-                <td class="pad-left-first"  ng-repeat="cell in item">{{ cell | characters:20 }}</td>
-                <td>
-                  <span class="more">
-                    <span>
-                      <img src="static/assets/img/icons/more2.svg" alt="more">
-                    </span>
+        <table class="table table-striped" ng-show="pageDesc == 'merged'">
+          <thead>
+            <tr>
+              <th ng-repeat="heading in data.head" >{{ heading }}</th>
+              <th>
+                <img src="static/assets/img/icons/more.svg" alt="more">
+              </th>
+            </tr>             
+          </thead>
+          <tbody>
+            <tr class="slide-trigger" ng-repeat="item in data.body track by $index" ng-click="slideAndPopulate(item)">
+              <td class="pad-left-first"  ng-repeat="cell in item track by $index">{{ cell | characters:20 }}</td>
+              <td>
+                <span class="more">
+                  <span>
+                    <img src="static/assets/img/icons/more2.svg" alt="more">
                   </span>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+                </span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <table class="table table-striped" ng-show="pageDesc == 'conflicts'">
+          <thead>
+            <tr>
+              <th ng-repeat="heading in data.head" >{{ heading }}</th>
+              <th>
+                <img src="static/assets/img/icons/more.svg" alt="more">
+              </th>
+            </tr>             
+          </thead>
+          <tbody>
+            <tr class="slide-trigger" ng-repeat="item in conflictsBody track by $index" ng-click="slideAndPopulate2(item[0])">
+              <td class="pad-left-first"  ng-repeat="cell in item track by $index">{{ cell | characters:20 }}</td>
+              <td>
+                <span class="more">
+                  <span>
+                    <img src="static/assets/img/icons/more2.svg" alt="more">
+                  </span>
+                </span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <table class="table table-striped" ng-show="pageDesc == 'logs'">
+          <tbody>
+            <tr class="slide-trigger" ng-repeat="item in data track by $index">
+              <td class="pad-left-first"  ng-repeat="cell in item track by $index">{{ cell | characters:20 }}</td>
+              <td>
+                <span class="more">
+                  <span>
+                    <img src="static/assets/img/icons/more2.svg" alt="more">
+                  </span>
+                </span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
       </div>
    </div>
 </section>
 
 <!-- Modal -->
-  <div class="modal fade" id="myModal" role="dialog">
+  <div class="modal fade" id="uploadModal" role="dialog">
     <div class="modal-dialog">
     
       <!-- Modal content-->
@@ -293,10 +295,9 @@
             <p class="pull-right close" data-dismiss="modal" aria-label="Close">&times;</p>
             <h3 class="thin blue text-center">Upload File(s)</h3>
             <hr>
-            <span class="progress" ng-show="progress >= 0">
-                <div ng-style="width:{{progress}}%"></div>
+            <!--<span class="progress" ng-show="progress >= 0">
             </span>
-            <br>
+            <br>-->
             <button class="btn btn-blue" ngf-select="uploadFiles($files)" multiple accept=".csv">Select File(s)</button>
             <br><br>
             <div class="text-center">
@@ -312,14 +313,68 @@
       
     </div>
   </div>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="downloadModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="uploadModal">            
+          <p class="pull-right close" data-dismiss="modal" aria-label="Close">&times;</p>
+            <h3 class="thin blue text-center">Download File</h3>
+            <hr>
+            <br>
+            <p class="light blue text-center">Your file is ready</p>    
+            <br>
+            <a class="btn btn-blue" ng-href="{{downloadLink}}">Download</a>
+            <br><br>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="deleteModal" role="dialog">
+    <div class="modal-dialog">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="uploadModal">            
+          <p class="pull-right close" data-dismiss="modal" aria-label="Close">&times;</p>
+            <h3 class="thin blue text-center">Delete File</h3>
+            <hr>
+            <br>
+            <h4 class="light text-center">This functionality is currently unavailable.</h4>
+            <br><br>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="helpModal" role="dialog">
+    <div class="modal-dialog">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="uploadModal">            
+          <p class="pull-right close" data-dismiss="modal" aria-label="Close">&times;</p>
+            <h3 class="thin blue text-center">Help</h3>
+            <hr>
+            <br>
+            <h4 class="light text-center">This functionality is currently unavailable.</h4>
+            <br><br>
+        </div>
+      </div>
+    </div>
+  </div>
 
 
 
 <script>
-  // Desktop slider
     var slideoutDesktop = new Slideout({
       'panel': document.getElementById('slide-panel'),
-      'menu': document.getElementById('extra-info-desktop'),
+      'menu': document.getElementById('extra-d'),
       'padding': 385,
       'side': 'right',
       'tolerance': 70
@@ -329,6 +384,27 @@
       $('.content-cover').fadeOut();
       slideoutDesktop.close();
     });
+
+    var slideoutDesktop2 = new Slideout({
+      'panel': document.getElementById('slide-panel'),
+      'menu': document.getElementById('extra-info-desktop2'),
+      'padding': 385,
+      'side': 'right',
+      'tolerance': 70
+    });
+    $('.extra-address .back').on('click', function() {
+      $('.side-pane').fadeToggle();
+      $('.content-cover').fadeOut();
+      slideoutDesktop.close();
+    });
+
+    $('#extra-info-desktop2 .back2').on('click', function() {
+      $('.side-pane').fadeToggle();
+      $('.content-cover').fadeOut();
+      slideoutDesktop2.close();
+    });
+
+
 </script>
 
 </body>

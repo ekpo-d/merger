@@ -3,15 +3,44 @@ angular.module('merger').controller('homeController',
   ['$scope', '$location', '$window', 'AuthService', '$document', '$uibModal', '$timeout', 'Upload', 'FileService', 'fileType',
   function ($scope, $location, $window, AuthService, $document, $uibModal, $timeout, Upload, FileService, fileType) {
     
+    $scope.tableFilter = '';
+    $scope.pageDesc = fileType
+
+    $scope.conflictsBody = []
+
+    function sanitize(data){
+      for (var z = 0; z < data.length; z++){
+        if (data[z].length < 2){
+          data.splice(z, 1);
+        }
+      }
+      return data
+    }
 
     $scope.getData = function(){
       FileService.getFile(fileType)
       .then(function(response){
         $scope.data = response.data.result
-      })
-    }
 
-    $scope.donwloadFile = function(){
+        if (fileType == 'conflicts'){
+          var body = $scope.data.body
+          
+          for (var key in body) {
+            if (body.hasOwnProperty(key)) {
+              $scope.conflictsBody.push(body[key][0]);
+            }
+          }
+        }
+        else if (fileType == 'logs'){
+          $scope.data = sanitize($scope.data)
+        }
+        else{
+          $scope.data.body = sanitize($scope.data.body)
+        }
+      })
+    };
+
+    $scope.downloadFile = function(){
       FileService.download(fileType)
       .then(function(response){
         $scope.downloadLink = response.data.result
@@ -34,6 +63,46 @@ angular.module('merger').controller('homeController',
         );
       }
     };
+
+    $scope.slideAndPopulate2 = function(item){
+      $scope.slideData2 = []
+      var body = $scope.data.body
+      if (body.hasOwnProperty(item)) {
+        for (var v = 0; v < body[item].length; v++){
+          $scope.slideData2.push([])
+          for (var w = 0; w < body[item][v].length; w++){          
+            $scope.slideData2[v].push({
+              "heading": $scope.data.head[w],
+              "body" : body[item][v][w]
+            })
+          }
+        }
+      }
+      $window.$('.side-pane').fadeToggle();
+      $window.$('.content-cover').fadeToggle();
+      $window.slideoutDesktop2.toggle();
+      $window.$('#slide2 a').click(function (e) {
+        e.preventDefault()
+        $window.$('.tab-pane').removeClass('active in')
+        $(this).tab('show')
+      })
+    };
+
+    $scope.conflictSelected = {};
+    $scope.mergeConflict = function(){
+      var row = '',
+          conflict = $scope.slideData2[$scope.conflictSelected]
+      
+      for (var j=0; j < conflict.length; j ++){
+        row += conflict[j].body + ';'
+      }
+      row = row.substr(0, row.length - 1)
+      FileService.updateFile(row)
+        // handle success
+        .then(function () {
+          console.log("file updated")
+        })
+    }
 
     $scope.activeClass = function (path) {
       return ($location.path().substr(0, path.length) === path) ? 'active' : '';

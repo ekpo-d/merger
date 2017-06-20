@@ -29,6 +29,7 @@ def login():
     if user and bcrypt.check_password_hash(
             user.password, json_data['password']):
         session['logged_in'] = True
+        session['user'] = json_data['email']
         status = True
     else:
         status = False
