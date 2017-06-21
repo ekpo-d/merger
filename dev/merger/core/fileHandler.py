@@ -13,20 +13,20 @@ class ToolBox(object):
     def __init_(self):
         pass
     
-    def breakdown(self, fileType, csvFile):
+    def breakdown(self, separator, csvFile):
         if csvFile == '':
             return ''
         else:
             segment = csvFile.split('\n', 1)
-            head = segment[0].split(';')
+            head = segment[0].split(separator)
             body = []
             
             if segment[1].find('\n') !=  -1:
                 for i in segment[1].split('\n'):
-                    bodyParts = i.split(';')
+                    bodyParts = i.split(separator)
                     body.append(bodyParts)
             else:
-                body.append(segment[1].split(';'))
+                body.append(segment[1].split(separator))
 
             return {
                 "head" : head,
@@ -66,14 +66,25 @@ class ToolBox(object):
     def createDF(self, separator, column, fileString):
         newfileData = StringIO(fileString)
         df = pd.read_csv(newfileData, sep=separator)
-        df[column] = df.business_name.map(lambda x : x.strip())
+        df[column] = df[column].map(lambda x : x.strip())
         return df
 
     def createFile(self, files):
         newfile = ''
         for item in files:
-            newfile += files[item].read()
-        return newfile
+            newfile += files[item].read() + '\n'
+        newBreakdown = self.breakdown(',', newfile)
+        head = newBreakdown["head"]
+        buildUp = ''
+
+        for index, item in enumerate(newBreakdown["body"]):
+            if set(item) & set(head) == set(head):
+                del newBreakdown["body"][index]
+            else:
+                buildUp += ','.join(item) + '\n'
+        buildUp = ','.join(head) + '\n' + buildUp
+
+        return buildUp
 
     def generateDuplicateDict(self, fileString):
         heading = self.getHeading(';', fileString)
@@ -103,6 +114,8 @@ class Base(ToolBox):
         self.newfile = super(Base, self).createFile(self.files)
 
         self.firstColumn = super(Base, self).getHeading(',', self.newfile)[0]
+
+        self.firstColumn = self.firstColumn[1 : len(self.firstColumn) - 1]
 
         self.df = super(Base, self).createDF(',', self.firstColumn, self.newfile)
 

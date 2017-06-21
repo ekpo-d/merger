@@ -17,11 +17,12 @@ angular.module('merger').controller('homeController',
       return data
     }
 
-    $scope.getData = function(){
+    $scope.setup = function(){
+
       FileService.getFile(fileType)
       .then(function(response){
         $scope.data = response.data.result
-
+        
         if (fileType == 'conflicts'){
           var body = $scope.data.body
           
@@ -35,6 +36,7 @@ angular.module('merger').controller('homeController',
           $scope.data = sanitize($scope.data)
         }
         else{
+          console.log($scope.data)
           $scope.data.body = sanitize($scope.data.body)
         }
       })
@@ -47,11 +49,15 @@ angular.module('merger').controller('homeController',
       })
     }
 
-    $scope.slideAndPopulate = function(item){
-      
-      $window.$('.side-pane').fadeToggle();
-      $window.$('.content-cover').fadeToggle();
-      $window.slideoutDesktop.toggle();
+    $scope.slideAndPopulateMerged = function(item){
+
+      $window.slideoutMerged = new $window.Slideout({
+        'panel': document.getElementById('slide-panel'),
+        'menu': document.getElementById('extra-d'),
+        'padding': 385,
+        'side': 'right',
+        'tolerance': 70
+      });
 
       $scope.slideData = []
       for (var i = 0; i < item.length; i++){
@@ -62,9 +68,23 @@ angular.module('merger').controller('homeController',
           }
         );
       }
+
+      console.log('slideAndPopulateMerged')
+      $window.$('.side-pane').fadeToggle();
+      $window.$('.content-cover').fadeToggle();
+      $window.slideoutMerged.toggle();
     };
 
     $scope.slideAndPopulate2 = function(item){
+
+      $window.slideoutDesktop2 = new $window.Slideout({
+        'panel': document.getElementById('slide-panel'),
+        'menu': document.getElementById('extra-info-desktop2'),
+        'padding': 385,
+        'side': 'right',
+        'tolerance': 70
+      });
+
       $scope.slideData2 = []
       var body = $scope.data.body
       if (body.hasOwnProperty(item)) {
@@ -78,13 +98,15 @@ angular.module('merger').controller('homeController',
           }
         }
       }
+
       $window.$('.side-pane').fadeToggle();
       $window.$('.content-cover').fadeToggle();
       $window.slideoutDesktop2.toggle();
+
       $window.$('#slide2 a').click(function (e) {
         e.preventDefault()
-        $window.$('.tab-pane').removeClass('active in')
-        $(this).tab('show')
+        $window.$('#extra-info-desktop2 .tab-pane').removeClass('active in')
+        $window.$(this).tab('show')
       })
     };
 

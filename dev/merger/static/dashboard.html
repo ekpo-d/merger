@@ -1,4 +1,4 @@
-<div  ng-init="getData()">
+<div  ng-init="setup()">
 
 <div id="extra-d" class="extra-desktop">  
   <div class="extra-address">
@@ -12,7 +12,6 @@
     </h4>
   </div>
   <hr>
-  <!-- Tab panes -->
   <div class="tab-content">
     <div role="tabpanel" class="tab-pane fade in active">
       <div class="extra-table">
@@ -230,7 +229,7 @@
             </tr>             
           </thead>
           <tbody>
-            <tr class="slide-trigger" ng-repeat="item in data.body track by $index" ng-click="slideAndPopulate(item)">
+            <tr class="slide-trigger" ng-repeat="item in data.body track by $index" ng-click="slideAndPopulateMerged(item)">
               <td class="pad-left-first"  ng-repeat="cell in item track by $index">{{ cell | characters:20 }}</td>
               <td>
                 <span class="more">
@@ -372,30 +371,11 @@
 
 
 <script>
-    var slideoutDesktop = new Slideout({
-      'panel': document.getElementById('slide-panel'),
-      'menu': document.getElementById('extra-d'),
-      'padding': 385,
-      'side': 'right',
-      'tolerance': 70
-    });
-    $('.extra-address .back').on('click', function() {
-      $('.side-pane').fadeToggle();
-      $('.content-cover').fadeOut();
-      slideoutDesktop.close();
-    });
 
-    var slideoutDesktop2 = new Slideout({
-      'panel': document.getElementById('slide-panel'),
-      'menu': document.getElementById('extra-info-desktop2'),
-      'padding': 385,
-      'side': 'right',
-      'tolerance': 70
-    });
-    $('.extra-address .back').on('click', function() {
+    $('#extra-d .back').on('click', function() {
       $('.side-pane').fadeToggle();
       $('.content-cover').fadeOut();
-      slideoutDesktop.close();
+      slideoutMerged.close();
     });
 
     $('#extra-info-desktop2 .back2').on('click', function() {

@@ -11,7 +11,7 @@ def getFile(fileType, filePath):
     try:
         fileString = dropboxAPI.download(filePath)
         if fileType == 'merged':
-            return toolBox.breakdown(fileType, fileString)
+            return toolBox.breakdown(';', fileString)
         elif fileType == 'conflicts':
             response = toolBox.generateDuplicateDict(fileString)
             return response
