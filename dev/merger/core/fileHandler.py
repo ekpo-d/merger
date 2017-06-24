@@ -115,8 +115,6 @@ class Base(ToolBox):
 
         self.firstColumn = super(Base, self).getHeading(',', self.newfile)[0]
 
-        self.firstColumn = self.firstColumn[1 : len(self.firstColumn) - 1]
-
         self.df = super(Base, self).createDF(',', self.firstColumn, self.newfile)
 
 
