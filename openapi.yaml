@@ -1,0 +1,940 @@
+openapi: '3.1.0'
+info:
+  title: FastAPI
+  version: 0.1.0
+paths:
+  /profiles/{profileIdentifier}:
+    get:
+      tags:
+        - profiles
+      summary: Get Profile
+      operationId: get_profile_profiles__profileIdentifier__get
+      parameters:
+        - required: true
+          schema:
+            title: Profileidentifier
+            anyOf:
+              - type: string
+              - type: string
+                format: email
+          name: profileIdentifier
+          in: path
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IProfile'
+        '404':
+          description: Not found
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /profiles/{profile_id}/basic-information:
+    put:
+      tags:
+        - profiles
+      summary: Update Basic Information
+      operationId: update_basic_information_profiles__profile_id__basic_information_put
+      parameters:
+        - required: true
+          schema:
+            title: Profile Id
+            type: string
+          name: profile_id
+          in: path
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/IBasicInfo'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IBasicInfo'
+        '404':
+          description: Not found
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /profiles/{profile_id}/match-preferences:
+    put:
+      tags:
+        - profiles
+      summary: Update Match Preferences
+      operationId: update_match_preferences_profiles__profile_id__match_preferences_put
+      parameters:
+        - required: true
+          schema:
+            title: Profile Id
+            type: string
+          name: profile_id
+          in: path
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/IMatchPreferences'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IMatchPreferences'
+        '404':
+          description: Not found
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /metadata/{metadata_type}:
+    get:
+      tags:
+        - metadata
+      summary: Get Metadata
+      operationId: get_metadata_metadata__metadata_type__get
+      parameters:
+        - required: true
+          schema:
+            title: Metadata Type
+            type: string
+          name: metadata_type
+          in: path
+        - required: false
+          schema:
+            title: Role
+            type: string
+          name: role
+          in: query
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '404':
+          description: Not found
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /work-histories/:
+    post:
+      tags:
+        - work-histories
+      summary: Create Work History
+      operationId: create_work_history_work_histories__post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/IWorkHistory'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IWorkHistoryResponse'
+        '404':
+          description: Not found
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /work-histories/{id}:
+    get:
+      tags:
+        - work-histories
+      summary: Get Work History
+      operationId: get_work_history_work_histories__id__get
+      parameters:
+        - required: true
+          schema:
+            title: Id
+            type: string
+          name: id
+          in: path
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IWorkHistoryResponse'
+        '404':
+          description: Not found
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+    put:
+      tags:
+        - work-histories
+      summary: Update Work History
+      operationId: update_work_history_work_histories__id__put
+      parameters:
+        - required: true
+          schema:
+            title: Id
+            type: string
+          name: id
+          in: path
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/IWorkHistoryBase'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IWorkHistoryResponse'
+        '404':
+          description: Not found
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+    delete:
+      tags:
+        - work-histories
+      summary: Update Work History
+      operationId: update_work_history_work_histories__id__delete
+      parameters:
+        - required: true
+          schema:
+            title: Id
+            type: string
+          name: id
+          in: path
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IWorkHistoryResponse'
+        '404':
+          description: Not found
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /case-studies/:
+    post:
+      tags:
+        - case-studies
+      summary: Create Case Study
+      operationId: create_case_study_case_studies__post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ICaseStudy'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ICaseStudyResponse'
+        '404':
+          description: Not found
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /case-studies/{id}:
+    get:
+      tags:
+        - case-studies
+      summary: Get Case Study
+      operationId: get_case_study_case_studies__id__get
+      parameters:
+        - required: true
+          schema:
+            title: Id
+            type: string
+          name: id
+          in: path
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ICaseStudyResponse'
+        '404':
+          description: Not found
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+    put:
+      tags:
+        - case-studies
+      summary: Update Case Study
+      operationId: update_case_study_case_studies__id__put
+      parameters:
+        - required: true
+          schema:
+            title: Id
+            type: string
+          name: id
+          in: path
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ICaseStudyResponse'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ICaseStudyResponse'
+        '404':
+          description: Not found
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+    delete:
+      tags:
+        - case-studies
+      summary: Update Case Study
+      operationId: update_case_study_case_studies__id__delete
+      parameters:
+        - required: true
+          schema:
+            title: Id
+            type: string
+          name: id
+          in: path
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ICaseStudyResponse'
+        '404':
+          description: Not found
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /:
+    get:
+      summary: Index
+      operationId: index__get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+components:
+  schemas:
+    HTTPValidationError:
+      title: HTTPValidationError
+      type: object
+      properties:
+        detail:
+          title: Detail
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidationError'
+    IBasicInfo:
+      title: IBasicInfo
+      required:
+        - first_name
+        - last_name
+        - email
+        - mobilephone
+        - state
+        - country
+        - years_of_experience
+      type: object
+      properties:
+        first_name:
+          title: First Name
+          type: string
+        last_name:
+          title: Last Name
+          type: string
+        email:
+          title: Email
+          type: string
+          format: email
+        mobilephone:
+          title: Mobilephone
+          type: string
+        state:
+          title: State
+          type: string
+        country:
+          title: Country
+          type: string
+        years_of_experience:
+          title: Years Of Experience
+          type: string
+    ICampaign:
+      title: ICampaign
+      required:
+        - demographic
+        - isB2B
+        - isB2C
+        - mediaSpend
+      type: object
+      properties:
+        demographic:
+          title: Demographic
+          type: array
+          items:
+            type: string
+        isB2B:
+          title: Isb2B
+          type: boolean
+        isB2C:
+          title: Isb2C
+          type: boolean
+        mediaSpend:
+          title: Mediaspend
+          type: array
+          items:
+            type: string
+    ICampaignEmpty:
+      title: ICampaignEmpty
+      type: object
+      properties:
+        demographic:
+          title: Demographic
+          type: array
+          items:
+            type: string
+        isB2B:
+          title: Isb2B
+          type: boolean
+        isB2C:
+          title: Isb2C
+          type: boolean
+        mediaSpend:
+          title: Mediaspend
+          type: array
+          items:
+            type: string
+    ICaseStudy:
+      title: ICaseStudy
+      required:
+        - title
+        - roles
+        - description
+        - url
+        - skills
+        - tools
+        - channels
+        - campaign
+        - profile_id
+        - company
+      type: object
+      properties:
+        title:
+          title: Title
+          type: string
+        roles:
+          title: Roles
+          type: array
+          items:
+            type: string
+        description:
+          title: Description
+          type: string
+        url:
+          title: Url
+          type: string
+        skills:
+          title: Skills
+          type: array
+          items:
+            type: string
+        tools:
+          title: Tools
+          type: array
+          items:
+            type: string
+        channels:
+          title: Channels
+          type: array
+          items:
+            type: string
+        campaign:
+          $ref: '#/components/schemas/ICampaign'
+        profile_id:
+          title: Profile Id
+          type: string
+        work_history_id:
+          title: Work History Id
+          type: string
+        _id:
+          title: ' Id'
+          type: string
+        company:
+          $ref: '#/components/schemas/ICompanyBase'
+    ICaseStudyEmpty:
+      title: ICaseStudyEmpty
+      required:
+        - company
+        - profile_id
+        - work_history_id
+      type: object
+      properties:
+        title:
+          title: Title
+          type: string
+        role:
+          title: Role
+          type: string
+        description:
+          title: Description
+          type: string
+        company:
+          $ref: '#/components/schemas/ICompanyBaseEmpty'
+        url:
+          title: Url
+          type: string
+        skills:
+          title: Skills
+          type: array
+          items:
+            type: string
+        tools:
+          title: Tools
+          type: array
+          items:
+            type: string
+        channels:
+          title: Channels
+          type: array
+          items:
+            type: string
+        campaign:
+          $ref: '#/components/schemas/ICampaignEmpty'
+        profile_id:
+          title: Profile Id
+          type: string
+        work_history_id:
+          title: Work History Id
+          type: string
+    ICaseStudyResponse:
+      title: ICaseStudyResponse
+      required:
+        - title
+        - roles
+        - description
+        - url
+        - skills
+        - tools
+        - channels
+        - campaign
+        - profile_id
+        - id
+        - company
+      type: object
+      properties:
+        title:
+          title: Title
+          type: string
+        roles:
+          title: Roles
+          type: array
+          items:
+            type: string
+        description:
+          title: Description
+          type: string
+        url:
+          title: Url
+          type: string
+        skills:
+          title: Skills
+          type: array
+          items:
+            type: string
+        tools:
+          title: Tools
+          type: array
+          items:
+            type: string
+        channels:
+          title: Channels
+          type: array
+          items:
+            type: string
+        campaign:
+          $ref: '#/components/schemas/ICampaign'
+        profile_id:
+          title: Profile Id
+          type: string
+        work_history_id:
+          title: Work History Id
+          type: string
+        id:
+          title: Id
+          type: string
+        company:
+          $ref: '#/components/schemas/ICompanyBase'
+    ICompanyBase:
+      title: ICompanyBase
+      required:
+        - name
+        - url
+        - stage
+        - size
+        - industry
+        - sub_industry
+      type: object
+      properties:
+        name:
+          title: Name
+          type: string
+        url:
+          title: Url
+          type: string
+        stage:
+          title: Stage
+          type: string
+        size:
+          title: Size
+          type: string
+        industry:
+          title: Industry
+          type: string
+        sub_industry:
+          title: Sub Industry
+          type: string
+    ICompanyBaseEmpty:
+      title: ICompanyBaseEmpty
+      type: object
+      properties:
+        name:
+          title: Name
+          type: string
+        url:
+          title: Url
+          type: string
+        stage:
+          title: Stage
+          type: string
+        size:
+          title: Size
+          type: string
+        industry:
+          title: Industry
+          type: string
+        sub_industry:
+          title: Sub Industry
+          type: string
+    IMatchPreferences:
+      title: IMatchPreferences
+      required:
+        - roles
+        - hours_per_week
+        - timezone
+      type: object
+      properties:
+        roles:
+          title: Roles
+          type: array
+          items:
+            $ref: '#/components/schemas/IRole'
+        hours_per_week:
+          title: Hours Per Week
+          type: string
+        timezone:
+          title: Timezone
+          type: array
+          items:
+            type: string
+    IProfile:
+      title: IProfile
+      required:
+        - id
+        - basic_info
+        - work_history
+        - match_preferences
+        - case_studies
+      type: object
+      properties:
+        id:
+          title: Id
+          type: string
+        basic_info:
+          $ref: '#/components/schemas/IBasicInfo'
+        work_history:
+          title: Work History
+          type: array
+          items:
+            anyOf:
+              - $ref: '#/components/schemas/IWorkHistory'
+              - $ref: '#/components/schemas/IWorkHistoryEmpty'
+        match_preferences:
+          $ref: '#/components/schemas/IMatchPreferences'
+        case_studies:
+          title: Case Studies
+          type: array
+          items:
+            $ref: '#/components/schemas/ICaseStudyEmpty'
+    IRole:
+      title: IRole
+      required:
+        - description
+        - rate
+      type: object
+      properties:
+        description:
+          title: Description
+          type: string
+        rate:
+          title: Rate
+          type: number
+    IWorkHistory:
+      title: IWorkHistory
+      required:
+        - role
+        - description
+        - job_type
+        - start_date
+        - is_currentJob
+        - is_agency
+        - is_manager_role
+        - profile_id
+        - company
+      type: object
+      properties:
+        role:
+          title: Role
+          type: string
+        description:
+          title: Description
+          type: string
+        job_type:
+          title: Job Type
+          type: string
+        start_date:
+          title: Start Date
+          type: string
+          format: date-time
+        end_date:
+          title: End Date
+          type: string
+          format: date-time
+        is_currentJob:
+          title: Is Currentjob
+          type: boolean
+        is_agency:
+          title: Is Agency
+          type: boolean
+        is_manager_role:
+          title: Is Manager Role
+          type: boolean
+        profile_id:
+          title: Profile Id
+          type: string
+        company:
+          $ref: '#/components/schemas/ICompanyBase'
+        _id:
+          title: ' Id'
+          type: string
+    IWorkHistoryBase:
+      title: IWorkHistoryBase
+      required:
+        - role
+        - description
+        - job_type
+        - start_date
+        - is_currentJob
+        - is_agency
+        - is_manager_role
+        - profile_id
+        - company
+      type: object
+      properties:
+        role:
+          title: Role
+          type: string
+        description:
+          title: Description
+          type: string
+        job_type:
+          title: Job Type
+          type: string
+        start_date:
+          title: Start Date
+          type: string
+          format: date-time
+        end_date:
+          title: End Date
+          type: string
+          format: date-time
+        is_currentJob:
+          title: Is Currentjob
+          type: boolean
+        is_agency:
+          title: Is Agency
+          type: boolean
+        is_manager_role:
+          title: Is Manager Role
+          type: boolean
+        profile_id:
+          title: Profile Id
+          type: string
+        company:
+          $ref: '#/components/schemas/ICompanyBase'
+    IWorkHistoryEmpty:
+      title: IWorkHistoryEmpty
+      required:
+        - profile_id
+        - company
+      type: object
+      properties:
+        role:
+          title: Role
+          type: string
+        description:
+          title: Description
+          type: string
+        job_type:
+          title: Job Type
+          type: string
+        start_date:
+          title: Start Date
+          type: string
+          format: date-time
+        end_date:
+          title: End Date
+          type: string
+          format: date-time
+        is_currentJob:
+          title: Is Currentjob
+          type: boolean
+        is_agency:
+          title: Is Agency
+          type: boolean
+        is_manager_role:
+          title: Is Manager Role
+          type: boolean
+        profile_id:
+          title: Profile Id
+          type: string
+        company:
+          $ref: '#/components/schemas/ICompanyBaseEmpty'
+    IWorkHistoryResponse:
+      title: IWorkHistoryResponse
+      required:
+        - role
+        - description
+        - job_type
+        - start_date
+        - is_currentJob
+        - is_agency
+        - is_manager_role
+        - profile_id
+        - company
+        - id
+      type: object
+      properties:
+        role:
+          title: Role
+          type: string
+        description:
+          title: Description
+          type: string
+        job_type:
+          title: Job Type
+          type: string
+        start_date:
+          title: Start Date
+          type: string
+          format: date-time
+        end_date:
+          title: End Date
+          type: string
+          format: date-time
+        is_currentJob:
+          title: Is Currentjob
+          type: boolean
+        is_agency:
+          title: Is Agency
+          type: boolean
+        is_manager_role:
+          title: Is Manager Role
+          type: boolean
+        profile_id:
+          title: Profile Id
+          type: string
+        company:
+          $ref: '#/components/schemas/ICompanyBase'
+        id:
+          title: Id
+          type: string
+    ValidationError:
+      title: ValidationError
+      required:
+        - loc
+        - msg
+        - type
+      type: object
+      properties:
+        loc:
+          title: Location
+          type: array
+          items:
+            type: string
+        msg:
+          title: Message
+          type: string
+        type:
+          title: Error Type
+          type: string
